@@ -76,6 +76,7 @@ make sure the input key has the link to the css and js as shown in the snippet a
 the it will create a link to the testing server for your application
 
 6. to link your css and js assets to your blade template, do this
+```html
     <!DOCTYPE html>
     <html lang="en">
 
@@ -92,6 +93,7 @@ the it will create a link to the testing server for your application
     <h1>Welcome to the Home Page</h1>
 </body>
 </html>
+```
 
 >[!NOTE]
 >Any changes is made to that page is only happening on the test version of your project
