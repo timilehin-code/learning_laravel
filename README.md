@@ -7,53 +7,97 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+# INTRO:
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<h1 style="color:green">Hi, it's me timi, and i am learning everything there is to learn about laravel</h1>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Lesson 1: Installing laravel globally:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+1. **Install composer** : Composer is the package manager for php that is used to install different php packages,frameworks and libraries for your project. You can install composer from the <a href="https://getcomposer.org/"> composer official website</a>,
+   after installation, you can now open your terminal and run the following commands
 
-## Learning Laravel
+2. **Install Laravel globally**: After installing Composer you then have to install laravel by running this command
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+```bash
+   composer global require laravel/installer
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+3. **Creating a Laravel Application**: now after installing Laravel globally, you now have to create a laravel application by running the following command
 
-## Laravel Sponsors
+```bash
+    laravel new name-of-your-application
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Lesson 2 : Building a test server:
 
-### Premium Partners
+when using laravel, there are two versions which are the test version that we work on and to make sure the it works perfectly then the live version which is publicly available and every user can access or see
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+1.  **Install node.js** : Node js is the server side version of js and to install you can go to the <a href="https://nodejs.org/en/download">node js official website</a> then take the following procedures
 
-## Contributing
+2.  make sure in your .env file on the app*url section it read something like this `APP_URL=http://localhost/dashboard/name-of-your-application/public` make sure the \_public* folder is included in the app_url like what we have here.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+3.  In your laravel application folder you will have to makes sure you have two files called `vite.config.js` and `package.json`
 
-## Code of Conduct
+4.  In your `vite.config.js` you should have
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```js
+import { defineConfig } from "vite";
+import laravel from "laravel-vite-plugin";
+import tailwindcss from "@tailwindcss/vite";
 
-## Security Vulnerabilities
+export default defineConfig({
+    plugins: [
+        laravel({
+            input: ["resources/css/app.css", "resources/js/app.js"],
+            refresh: true,
+        }),
+        tailwindcss(),
+    ],
+    server: {
+        watch: {
+            ignored: ["**/storage/framework/views/**"],
+        },
+    },
+});
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+make sure the input key has the link to the css and js as shown in the snippet above
 
-## License
+5. now open your code editor terminal and run the following commands
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+ npm install vite --save-dev
+```
+
+```bash
+ npx vite
+```
+
+the it will create a link to the testing server for your application
+
+6. to link your css and js assets to your blade template, do this
+    <!DOCTYPE html>
+    <html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/app.css">
+    <title>Document</title>
+    @vite('resources/css/app.css')
+    @vite('resources/js/app.js')
+</head>
+
+<body>
+    <h1>Welcome to the Home Page</h1>
+</body>
+</html>
+
+>[!NOTE]
+>Any changes is made to that page is only happening on the test version of your project
+
+7. You can compile the test version of your application to the live version by running this command
+```bash
+    npx vite build
+```
+this command builds a version of the website and puts it into the live version of the website
