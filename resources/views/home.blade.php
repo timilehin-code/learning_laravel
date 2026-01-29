@@ -12,6 +12,7 @@
 
 <body>
     <h1>Welcome to the Home Page</h1>
+    <a href="{{ route("testpage") }}">Go to test page</a>
 </body>
 
 </html>

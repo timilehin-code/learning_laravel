@@ -68,57 +68,97 @@ make sure the input key has the link to the css and js as shown in the snippet a
 ```bash
  npm install vite --save-dev
 ```
+
  <h3 style="text-align:center;">Or</h3>
 
- ```bash
-     npm install vite -D
- ```
+```bash
+    npm install vite -D
+```
 
- **What it does:**
- * Installs Vite (fast dev server & build tool)
- * Adds it to `devDependencies` in `package.json`
- * Used only during development (not in production)
+**What it does:**
+
+- Installs Vite (fast dev server & build tool)
+- Adds it to `devDependencies` in `package.json`
+- Used only during development (not in production)
 
  <h3>Then <h3>
 
 ```bash
  npx vite
 ```
+
 <h3 style="text-align:center;">Or</h3>
 
 ```bash
  npm run dev
 ```
-this  will create a link to the testing server for your application
+
+this will create a link to the testing server for your application
 
 6. to link your css and js assets to your blade template, do this
+
 ```html
-    <!DOCTYPE html>
-    <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../css/app.css" />
+        <title>Document</title>
+        @vite('resources/css/app.css') @vite('resources/js/app.js')
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/app.css">
-    <title>Document</title>
-    @vite('resources/css/app.css')
-    @vite('resources/js/app.js')
-</head>
-
-<body>
-    <h1>Welcome to the Home Page</h1>
-</body>
+    <body>
+        <h1>Welcome to the Home Page</h1>
+    </body>
 </html>
 ```
 
->[!NOTE]
->Any changes is made to that page is only happening on the test version of your project
+> [!NOTE]
+> Any changes is made to that page is only happening on the test version of your project
 
 7. You can compile the test version of your application to the live version by running this command
+
 ```bash
     npx vite build
 ```
+
 this command builds a version of the website and puts it into the live version of the website
 
-
 ## Lesson 3 - Laravel routes:
+
+routes helps you handle HTTP requests on your web app. The route folder is located inside the main folder in your application folder, but we are going to be focusing more on the `web.php` file to create routes. There are 6 main types of routes in laravel
+**Which are:**
+
+- get() : which is used to get resources from uri and other parameters
+- post()
+- put()
+- patch()
+- delete()
+- options()
+
+```Php
+//parameters using route
+Route::get('/profile/{firstName}/{lastName}', function ($firstName, $lastName) {
+    return $firstName . $lastName;
+
+});
+// Named Routes
+Route::get('/test', function () {
+    return "This is a test";
+    
+})->name("testpage");
+
+
+// grouped route
+Route::prefix("profile")->group(function () {
+    Route::get('/company', function () {
+        return view('company');
+    });
+    Route::get('/user', function () {
+        return view('user.blade');
+    });
+});
+```
+
+
