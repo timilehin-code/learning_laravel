@@ -11,7 +11,7 @@
 
 <h1 style="color:green">Hi, it's me timi, and i am learning everything there is to learn about laravel</h1>
 
-## Lesson 1: Installing laravel globally:
+## Lesson 1 - Installing laravel globally:
 
 1. **Install composer** : Composer is the package manager for php that is used to install different php packages,frameworks and libraries for your project. You can install composer from the <a href="https://getcomposer.org/"> composer official website</a>,
    after installation, you can now open your terminal and run the following commands
@@ -28,7 +28,7 @@
     laravel new name-of-your-application
 ```
 
-## Lesson 2 : Building a test server:
+## Lesson 2 - Building a test server:
 
 when using laravel, there are two versions which are the test version that we work on and to make sure the it works perfectly then the live version which is publicly available and every user can access or see
 
@@ -68,12 +68,28 @@ make sure the input key has the link to the css and js as shown in the snippet a
 ```bash
  npm install vite --save-dev
 ```
+ <h3 style="text-align:center;">Or</h3>
+
+ ```bash
+     npm install vite -D
+ ```
+
+ **What it does:**
+ * Installs Vite (fast dev server & build tool)
+ * Adds it to `devDependencies` in `package.json`
+ * Used only during development (not in production)
+
+ <h3>Then <h3>
 
 ```bash
  npx vite
 ```
+<h3 style="text-align:center;">Or</h3>
 
-the it will create a link to the testing server for your application
+```bash
+ npm run dev
+```
+this  will create a link to the testing server for your application
 
 6. to link your css and js assets to your blade template, do this
 ```html
@@ -103,3 +119,6 @@ the it will create a link to the testing server for your application
     npx vite build
 ```
 this command builds a version of the website and puts it into the live version of the website
+
+
+## Lesson 3 - Laravel routes:
