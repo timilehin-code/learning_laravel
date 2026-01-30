@@ -12,6 +12,7 @@
 
 <body>
     <header>
+        <img src="{{ asset("images/images.jpg") }}" alt="" width="400" height="500">
         @yield("header")
     </header>
     <main>

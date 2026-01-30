@@ -14,11 +14,6 @@ Route::get('/profile/', function () {
     return view('profile');
 });
 
-// // Named Routes
-// Route::get('/contact', function () {
-//     return view('contact');
-// });
-
 // Grouped route
 Route::prefix("/")->group(function () {
     Route::get('/contact', function () {
