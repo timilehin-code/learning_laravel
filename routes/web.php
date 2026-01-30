@@ -14,15 +14,15 @@ Route::get('/profile/', function () {
     return view('profile');
 });
 
-// Named Routes
-Route::get('/contact', function () {
-    return view('contact');
-});
+// // Named Routes
+// Route::get('/contact', function () {
+//     return view('contact');
+// });
 
 // Grouped route
-Route::prefix("profile")->group(function () {
-    Route::get('/company', function () {
-        return view('company');
+Route::prefix("/")->group(function () {
+    Route::get('/contact', function () {
+        return view('contact');
     });
     Route::get('/user', function () {
         return view('user.blade');
