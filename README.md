@@ -127,11 +127,11 @@ this command builds a version of the website and puts it into the live version o
 
 ## Lesson 3 - Laravel routes:
 
-routes helps you handle HTTP requests on your web app. The route folder is located inside the main folder in your application folder, but we are going to be focusing more on the `web.php` file to create routes. There are 6 main types of routes in laravel
+routes helps you handle HTTP requests on your web app. The route folder is located inside the main folder in your application folder, but we are going to be focusing more on the `web.php` file to create routes. There are 6 basic types of routes in laravel
 **Which are:**
 
 - get() : which is used to get resources from uri and other parameters
-- post()
+- post() : which is used when submitting data
 - put()
 - patch()
 - delete()
@@ -146,7 +146,7 @@ Route::get('/profile/{firstName}/{lastName}', function ($firstName, $lastName) {
 // Named Routes
 Route::get('/test', function () {
     return "This is a test";
-    
+
 })->name("testpage");
 
 
@@ -159,6 +159,32 @@ Route::prefix("profile")->group(function () {
         return view('user.blade');
     });
 });
+
+// Post Route example
+Route::post("/formSubmit", function(Request $request){
+    $request->validate([
+        'fullName' => 'required|min:3',
+        'email' => 'required|min:3|max:300|email:rfc,dns',
+    ]);
+    $fullName = $request->input('fullName');
+    $email = $request->input('email');
+
+    return "Your fullName is $fullName and email is $email";
+})->name("submit_form");
 ```
 
+[!NOTE]
 
+> For you to be able to use the router Methods you have to use the following namespace
+
+```php
+use Illuminate\Support\Facades\Route;
+```
+
+[!NOTE]
+
+> To be able to handle HTTP request, and accessing request data, and more, you will use the following namespace
+
+```php
+use Illuminate\Http\Request;
+```

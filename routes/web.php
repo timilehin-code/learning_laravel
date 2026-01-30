@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 
 // basic get route
@@ -27,3 +28,15 @@ Route::prefix("profile")->group(function () {
         return view('user.blade');
     });
 });
+
+// Post Route example
+Route::post("/formSubmit", function(Request $request){
+    $request->validate([
+        'fullName' => 'required|min:3',
+        'email' => 'required|min:3|max:300|email:rfc,dns',
+    ]);
+    $fullName = $request->input('fullName');
+    $email = $request->input('email');
+
+    return "Your fullName is $fullName and email is $email";
+})->name("submit_form");
