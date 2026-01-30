@@ -173,18 +173,20 @@ Route::post("/formSubmit", function(Request $request){
 })->name("submit_form");
 ```
 
-[!NOTE]
-
+>[!NOTE]
 > For you to be able to use the router Methods you have to use the following namespace
 
 ```php
 use Illuminate\Support\Facades\Route;
 ```
 
-[!NOTE]
-
+>[!NOTE]
 > To be able to handle HTTP request, and accessing request data, and more, you will use the following namespace
 
 ```php
 use Illuminate\Http\Request;
 ```
+
+## Lesson 4 - Layouts:
+ Layouts allows you to be able to reuse code just like the php include and require functions but it is a bit different because you have to create a layout page  that will be mirrored by other pages  and to do that you have to use the  `@yield` directive to define a layout
+section and the in the page that is going to mirror the layout is going to  use the `@extends` directive to specify the layout you are mirroring and then the `@section` directive to specify the section of the layout you want to mirror, although we have the `@include` directive to include a page to another page

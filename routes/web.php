@@ -15,9 +15,9 @@ Route::get('/profile/', function () {
 });
 
 // Named Routes
-Route::get('/test', function () {
-    return "This is a test";
-})->name("testpage");
+Route::get('/contact', function () {
+    return view('contact');
+});
 
 // Grouped route
 Route::prefix("profile")->group(function () {
