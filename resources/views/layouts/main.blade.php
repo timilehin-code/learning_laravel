@@ -12,7 +12,7 @@
 
 <body>
     <header>
-        <img src="{{ asset("images/images.jpg") }}" alt="" width="400" height="500">
+        <img src="{{ asset("images/images.jpg") }}" alt="" width="400" height="5 00">
         @yield("header")
     </header>
     <main>
