@@ -205,3 +205,43 @@ the mcr at the back stands for
 1. m - Migration : (it creates a table structure for the model you created)
 2. c - Controller : (the controller creates a controller class for the model you created)
 3. r - Resources (for creates all the methods required for a crude operation in the controller class)
+
+
+## Lesson 6 - Migrating tables to databases
+So  after creating a model and controller using the PHP command above in your database folder it creates a php file that helps you  create a table in your database
+
+```php
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('posts', function (Blueprint $table) {
+            $table->id();
+            $table->string('title'); // to create a column with the data type  varchar
+            $table->text('body'); // to create a column with the data type  text
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('posts'); // dropping a table
+    }
+};
+```
+So after adding the column into the methods you can now run the following commands
+```bash
+    php artisan migrate # to migrate a table
+    
+    php artisan  migrate:rollback # to undo/rollback previous changes
+
+    php artisan migrate:refresh # to re-run all migration files in the database
+
+    # you can add --path=database/migrations/yourFileName.php if you are targeting one file
+```
