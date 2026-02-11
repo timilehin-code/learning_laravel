@@ -206,9 +206,9 @@ the mcr at the back stands for
 2. c - Controller : (the controller creates a controller class for the model you created)
 3. r - Resources (for creates all the methods required for a crude operation in the controller class)
 
-
 ## Lesson 6 - Migrating tables to databases
-So  after creating a model and controller using the PHP command above in your database folder it creates a php file that helps you  create a table in your database
+
+So after creating a model and controller using the PHP command above in your database folder it creates a php file that helps you create a table in your database
 
 ```php
 return new class extends Migration
@@ -225,7 +225,6 @@ return new class extends Migration
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */
@@ -235,13 +234,71 @@ return new class extends Migration
     }
 };
 ```
+
 So after adding the column into the methods you can now run the following commands
+
 ```bash
     php artisan migrate # to migrate a table
-    
+
     php artisan  migrate:rollback # to undo/rollback previous changes
 
     php artisan migrate:refresh # to re-run all migration files in the database
 
     # you can add --path=database/migrations/yourFileName.php if you are targeting one file
 ```
+
+## Lesson 7 - Setting up routes for different request methods :
+
+When you run the `php artisan make:model yourModelName -mcr` the `r` creates some resources/methods that you might need to perform a particular task with the database
+
+```php
+Route::resource('nameOfTheRoute', NameOfYourControllerClass::class);
+```
+
+So after creating a route for the controller class you are working on you can now start adding instructions created methods in your controller class
+
+```php
+class PostController extends Controller
+{
+    // A method in the controller
+ public function index()
+    {
+        $posts =  Post::all();
+        return view('posts.index', compact('posts'));
+    }
+}
+```
+
+> [!Note]
+> this first parameter in the view function returns you the page you are referring to, While the second parameter passes the data into an array and send it to the page that we are going to view
+
+**Default methods that comes when you create a controller class in laravel**
+| Method | usage | Http method |
+|-------------|--------------------|-------------|
+| `index()` | Show all data | GET |
+| `create()` | Shows empty form to create data | GET |
+| `store()` | save data in data base | POST |
+| `show()` | show one particular data | GET
+| `edit()` | Shows form pre-filled with existing data | GET|
+| `update()` | Saves changes to an existing data | PUT |
+| `destroy()` |Deletes a post from database | DELETE|
+
+**Default methods that comes with the laravel model class**
+| Method | usage |
+|--------|-------|
+| `find($id)`| Get one record by its primary key (returns null if not found)|
+| `findOrFail($id)`| Get one record by ID — throws 404 if not found|
+| `all()`| Get all records from the table (no conditions)|
+| `where('column', 'value')`| Start a query constraint (can chain many)|
+| `destroy($id)`| Delete record(s) by ID(s) — static method|
+| `update(array $data)`| Update the record with new values (mass assignment)|
+| `create(array $data)`| Create and save a new record (mass assignment safe if $fillable is set)|
+| `with('relation')`| Eager load relationships to avoid N+1 query problem|
+
+**Helper methods in laravel**
+| Method | usage |
+|--------|-------|
+| `redirect()`| Send browser to another URL|
+| `route()`| Generate URLs from route names|
+| `view()`| Render Blade templates|
+| `$request->validate()`| Check & clean incoming form data|
