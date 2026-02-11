@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use App\Http\Controllers\PostController;
 
 
 // basic get route
@@ -35,3 +36,6 @@ Route::post("/formSubmit", function(Request $request){
 
     return "Your fullName is $fullName and email is $email";
 })->name("submit_form");
+
+// route for all resource in the a controller class
+Route::resource('posts', PostController::class); 
