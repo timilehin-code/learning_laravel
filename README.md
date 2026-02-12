@@ -128,6 +128,7 @@ this command builds a version of the website and puts it into the live version o
 ## Lesson 3 - Laravel routes:
 
 routes helps you handle HTTP requests on your web app. The route folder is located inside the main folder in your application folder, but we are going to be focusing more on the `web.php` file to create routes. There are 6 basic types of routes in laravel
+WildCards are somewhat like parameters passed to the  route Uri and then a argument or parameter is passed into the callback function
 **Which are:**
 
 - get() : which is used to get resources from uri and other parameters
@@ -138,7 +139,7 @@ routes helps you handle HTTP requests on your web app. The route folder is locat
 - options()
 
 ```Php
-//parameters using route
+//parameter or wild card route
 Route::get('/profile/{firstName}/{lastName}', function ($firstName, $lastName) {
     return $firstName . $lastName;
 
