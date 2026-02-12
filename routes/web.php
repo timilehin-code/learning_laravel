@@ -7,8 +7,14 @@ use App\Http\Controllers\PostController;
 
 // basic get route
 Route::get('/', function () {
-    return view('home');
+    $Name = [
+        ["Name" => "Timi", "skill" => 80, "id" => 1],
+        ["Name" => "David", "skill" => 70, "id" => 2],
+        ["Name" => "Elijah", "skill" => 70, "id" => 3],
+    ];
+    return view('home', ["greeting" => "Welcome", "ninjas" => $Name]);
 });
+
 
 //parameters using route
 Route::get('/profile/', function () {
