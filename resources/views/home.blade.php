@@ -7,15 +7,10 @@
 
 @section('main')
 
-<h1>Welcome to the Home Page</h1>
-<form action="{{ route('submit_form') }}" method="post">
-    @csrf
-    <label for="fullName">Full name:</label>
-    <input type="text" id="fullName" name="fullName" placeholder="Type your full name" required> <br>
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" placeholder="Type your email" required> <br>
-    <button type="submit">Submit</button>
-</form>
+<h1>{{ $greeting }}</h1>
+@foreach ($ninjas as $ninja)
+    <li>ID--{{ $ninja['id'] }} Name--{{ $ninja['Name'] }} Skill--{{ $ninja['skill'] }}</li> 
+@endforeach
 @endsection
 
 @section('footer')
