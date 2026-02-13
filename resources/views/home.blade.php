@@ -11,10 +11,8 @@
 @foreach ($ninjas as $ninja)
     <li>ID--{{ $ninja['id'] }} Name--{{ $ninja['Name'] }} Skill--{{ $ninja['skill'] }}</li> 
 @endforeach
-@endsection
 
-@section('footer')
 
-<h3>This is the footer</h3>
-
-@endsection
+@if ($greeting == "Welcome")
+    <p>Welcome from an If statement</p>
+@endif
