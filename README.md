@@ -303,3 +303,12 @@ class PostController extends Controller
 | `route()`| Generate URLs from route names|
 | `view()`| Render Blade templates|
 | `$request->validate()`| Check & clean incoming form data|
+
+## Lesson 8 : Blade directives:
+A directive is a way to add logic within views of a blade template and also conditonally render content to the browsers. To create a directive, you need to use the `@` symbol followed by the directive name
+**examples of directives are**
+| Directives | usage |
+|--------|-----------|
+| `@if`  | for rendering conditionals|
+| `foreach`| for rendering array of data|
+| `@yield`| to define a layout section|
